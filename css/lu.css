@@ -1,0 +1,491 @@
+@font-face {
+    font-family: LU_Font;
+    src: url('../font/Station.ttf');
+}
+
+h1 {
+	color: white;
+}
+
+h3, h4{
+	margin: 0;
+}
+
+hr{
+	margin: 5px 0;
+}
+
+html{
+	font-family: LU_Font, sans-serif;
+}
+
+html.map {
+	background: url('../img/LUmap.jpg') #000 no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+html.map>body{
+	padding: 20px;
+}
+
+html.mythran{
+	background-color: #000;
+	background: url('../img/Mythran2.jpg') #000 no-repeat center center fixed;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+}
+
+html.mythran>body{
+	background-color: #000;
+}
+
+.left{
+	left: 22px;
+	width: 32%;
+}
+
+.right{
+	right: 22px;
+	width: 25%;
+	padding-bottom: 50px !important;
+}
+
+.shine{
+	background-color: rgba(0,0,0,0.4);
+	color: #FFF;
+	padding: 20px;
+}
+
+.shine .changelog{
+	overflow: hidden;
+	height: 100%;
+	padding: 0 0 100px 0;
+	box-sizing: border-box;
+}
+
+.shine .changelog div{
+	overflow-x:auto;
+	height:100%;
+}
+
+.shine .changelog pre{
+	margin: 0;
+}
+
+.shine .btn{
+	background-color: #003;
+	border-radius: 4px;
+	text-decoration: none;
+	display: block;
+}
+
+.shine .btn>span{
+	display: block;
+	padding: 10px;
+}
+
+.shine .btn:hover{
+	background-color: #004;
+}
+
+.box{
+	background-color: #AAA;
+	border: 3px solid #BBB;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+.box .btn{
+	background-color: #A5A5A5;
+	border-radius: 15px;
+	text-decoration: none;
+	display: block;
+}
+
+.box .btn>span{
+	display: block;
+	padding: 10px;
+}
+
+.box .btn:hover{
+	background-color: #EEE;
+}
+
+.alert{
+	background-color: rgba(256, 0, 0, 0.2);
+	padding: 5px 10px;
+	border-left: 3px solid #900;
+}
+
+.alert.bottom{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+}
+
+.fixed-bottom{
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	left: 20px;
+}
+
+.left, .right{
+	position:fixed;
+	top: 0px;
+	bottom: 0px;
+}
+
+.map .left, .map .right{
+	top: 20px;
+	bottom: 20px;
+}
+
+.box .changelog{
+	overflow: hidden;
+	background-color: #CCC;
+	max-height: 255px;
+	border-radius: 15px;
+	padding: 10px 3px;
+}
+
+p {
+}
+
+a:link, a:visited, a:hover {
+	color: #444;
+}
+
+.green{
+	color: #0F0;
+}
+
+.shine table{
+	width: 100%;
+}
+
+.fill{
+	position: fixed;
+	left: 20px;
+	top: 20px;
+	right: 20px;
+	bottom: 20px;
+}
+
+/* -- Factions -- */
+
+.center{
+	margin:auto;
+	width: 50%;
+	min-width: 500px;
+}
+
+.panel4{
+	display: inline-block;
+	width: 25%;
+	vertical-align: top;
+}
+
+.panel-in{
+	border-radius: 10px;
+	margin: 5px;
+}
+
+.panel-in:hover{
+	margin: 2px;
+	cursor: pointer;
+}
+
+.padded{
+	width: 80%;
+	margin: 10%;
+}
+
+ul.nav{
+	list-style-type: none;
+	padding: 0;
+	margin: 5px 0;
+}
+
+ul.nav>li>.button{
+	display: block;
+	width: 100%;
+	color: #FFF;
+	padding: 5px;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+ul.nav>li>.title{
+	text-decoration: underline;
+	color: #000;
+}
+
+ul.nav>li:first-child>a, ul.nav>li:first-child>span{
+	border-top-right-radius: 20px;
+}
+
+ul.nav>li:last-child>a, ul.nav>li:last-child>span{
+	border-bottom-right-radius: 20px;
+}
+
+ul.nav>li:not(:last-child){
+	margin-bottom: 2px;
+}
+
+.menu{
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 175px;
+}
+
+.menu .logo{
+	border-bottom-right-radius: 20px;
+	height: 175px;
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.button{
+	border: 1px solid #AAB;
+	color: #444;
+	background-color: #AAB;
+}
+
+.button.selected{
+	border-left: 5px solid #555 !important;
+}
+
+.assembly .button{
+	border: 1px solid #CC5F00;
+	background-color: #CC5F00;
+	color: #FFF;
+}
+
+.sentinel .button{
+	background-color: #0041A3;
+	border: 1px solid #0041A3;
+	color: #FFF;
+}
+
+.paradox .button, .paradox.button{
+	background-color: #600;
+	border: 1px solid #600;
+	color: #FFF;
+}
+
+.ventureleague .button, .ventureleague.button{
+	background-color: #225600;
+	border: 1px solid #225600;
+	color: #FFF;
+}
+
+a.button:hover{
+	background-color: #FFF;
+	color: #444 !important;
+}
+
+.assembly a.button:hover{
+	background-color: #FFF;
+	color: #CC5F00 !important;
+}
+
+.sentinel a.button:hover{
+	background-color: #FFF;
+	color: #0041A3 !important;
+}
+
+.paradox a.button:hover, a.paradox.button:hover{
+	color: #600;
+	background-color: #FFF !important;
+}
+
+.ventureleague a.button:hover, a.ventureleague.button:hover{
+	color: #225600;
+	background-color: #FFF !important;
+}
+
+.logo{
+	background-image: url('../img/nexus-force-logo.png');
+}
+
+.assembly .logo, .assembly.logo{
+	background-image: url('../img/WikiAvAssembly1.png');
+}
+
+.sentinel .logo, .sentinel.logo{
+	background-image: url('../img/WikiAvSentinels1.png');
+}
+
+.paradox .logo, .paradox.logo{
+	background-image: url('../img/WikiAvParadox1.png');
+}
+
+.ventureleague .logo, .ventureleague.logo{
+	background-image: url('../img/WikiAvVenture1.png');
+}
+
+.pane{
+	color: #444;
+	background-color: #AAB;
+}
+
+.assembly .pane, .assembly.pane{
+	background-color: #CC5F00;
+	color: #FFF;
+}
+
+.sentinel .pane, .sentinel.pane{
+	background-color: #0041A3;
+	color: #FFF;
+}
+
+.paradox .pane, .paradox.pane{
+	background-color: #600;
+	color: #FFF;
+}
+
+.ventureleague .pane, .ventureleague.pane{
+	background-color: #225600;
+	color: #FFF;
+}
+
+.wrapper{
+	width: 90%;
+	max-width: 1000px;
+	margin: 40px auto;
+	box-sizing: border-box;
+	color: #FFF;
+	font-size: 30pt;
+}
+
+.wrapper span.small{
+	font-size: 15pt;
+}
+
+.wrapper input{
+	font-size: 30pt;
+	font-family: LU_Font, sans-serif;
+	border-radius: 30px;
+	padding: 0 20px;
+	border: 0;
+	box-sizing: border-box;
+}
+
+.wrapper input[type="submit"]{
+	background-color: #5AF;
+	float: right;
+	box-sizing: border-box;
+	height: 60px;
+}
+
+.wrapper input[type="submit"]:hover{
+	border: 2px solid #000;
+	padding-right: 18px;
+}
+
+.wrapper input[type="submit"]:active{
+	background-color: #39F;
+}
+
+.wrapper-header{
+	padding: 10px 40px;
+}
+
+.wrapper-content{
+	background: #333;
+	border-radius: 40px;
+	padding: 40px;
+}
+
+.wrapper-footer{
+	margin: 0 40px;
+	background-color: #FC0;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	padding: 20px;
+	font-size: 17px;
+}
+
+.wrapper-footer a{
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.wrapper-footer a:hover{
+	text-decoration: underline;
+}
+
+.table{
+	display: table;
+}
+
+.table-row{
+	display: table-row;
+}
+
+.table-cell{
+	padding: 5px;
+}
+
+@media (min-width: 30em){
+	.table-cell{
+		display: table-cell;
+	}
+}
+
+table{
+	border-collapse: collapse;
+}
+
+table tr>td, table tr>th{
+	border: 1px solid #000;
+	padding: 6px;
+}
+
+table.th-right th{
+	text-align: right;
+}
+
+.tb-input td{
+	vertical-align: top;
+	padding: 0;
+}
+
+.tb-input td>input, .tb-input td>label, .tb-input td>select{
+	height: 100%;
+	font-size: 21px;
+}
+
+.tb-input td>input[type="checkbox"] {
+    display:none;
+}
+
+.tb-input td>select{
+	padding: 2.5px;
+	min-width: 221px;
+}
+
+.tb-input td>input[type="checkbox"] + label:before, .tb-input td>select{
+	display: block;
+}
+
+.tb-input td>input[type="checkbox"] + label:before{
+	content:"NO";
+	background-color: #2D2;
+	padding: 3px;
+}
+
+.tb-input td>input[type="checkbox"]:checked + label:before{
+	content:"YES";
+	background-color: #D00;
+}
