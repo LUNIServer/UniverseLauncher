@@ -28,7 +28,7 @@
 				</div>
 			</div>
 			<div class="wrapper-footer">
-				<div><div style="display: flex"><span style="flex: 1 1 75%">&copy; 2015 LUNI Dev Team</span><a href="?page=register" style="flex: 1 1 25%; text-align: right; padding-right: 10px;">Register Account</a></div></div>
+				<div><div style="display: flex"><span style="flex: 1 1 84%">&copy; 2015 LUNI Dev Team</span><a href="?page=register" style="flex: 1 1 16%; text-align: right; padding-right: 10px;">Register Account</a></div></div>
 			</div>
 			
 		</div>

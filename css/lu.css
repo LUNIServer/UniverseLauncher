@@ -100,6 +100,16 @@ html.mythran>body{
 	border-radius: 20px;
 }
 
+.box.widget{
+	width: 280px;
+	height: 280px;
+	display: inline-block;
+	margin-bottom: 5px;
+	box-sizing: border-box;
+	vertical-align: top;
+	position: relative;
+}
+
 .box .btn{
 	background-color: #A5A5A5;
 	border-radius: 15px;
@@ -374,26 +384,40 @@ a.button:hover{
 
 .wrapper input{
 	font-size: 30pt;
-	font-family: LU_Font, sans-serif;
-	border-radius: 30px;
 	padding: 0 20px;
-	border: 0;
-	box-sizing: border-box;
+	border-radius: 30px;
 }
 
-.wrapper input[type="submit"]{
+input{
+	font-family: LU_Font, sans-serif;
+	border: 0;
+	box-sizing: border-box;
+	padding: 0 5px;
+	border-radius: 7.5px;
+}
+
+input[type="submit"]{
 	background-color: #5AF;
 	float: right;
 	box-sizing: border-box;
+	height: 25px;
+}
+
+.wrapper input[type="submit"]{
 	height: 60px;
 }
 
-.wrapper input[type="submit"]:hover{
+input[type="submit"]:hover{
 	border: 2px solid #000;
+	padding-right: 3px;
+	margin-left: -2px;
+}
+
+.wrapper input[type="submit"]:hover{
 	padding-right: 18px;
 }
 
-.wrapper input[type="submit"]:active{
+input[type="submit"]:active{
 	background-color: #39F;
 }
 

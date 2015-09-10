@@ -3,7 +3,14 @@
 	<?php if (isset($_SESSION['rank']) && $_SESSION['rank'] > 1){ ?>
 	<h1 style="color:#000; margin: 0;">Sessions</h1>
 	<br/>
-	<table>
+	<?php 
+		$cleared = false;
+		if (isset($_POST['session']) && $_POST['session'] == "Clear Sessions"){
+			$cleared = true;
+			$mysql->query("TRUNCATE TABLE sessions");
+		}
+	?>
+	<table style="width: 100%;">
 		<tr><th>Instance</th><th>Client</th><th>Phase</th><th>Name</th><th>Character</th><th>Zone</th></tr>
 <?php
 	$sql = "SELECT `instanceid`, `ipaddress`, `phase`, `accountid`, `charid`, `zoneid` FROM `sessions`";
@@ -33,6 +40,10 @@
 		?></td></tr>
 <?php } ?>
 	</table>
+	<br>
+	<form method="POST" style="text-align: right;">
+		<?php if ($cleared) echo "Sessions Cleared"; ?>&nbsp;&nbsp;<input type="submit" name="session" value="Clear Sessions">
+	</form>
 	<?php }else{ ?>
 	<div class="alert">
 		You are not allowed to access this page

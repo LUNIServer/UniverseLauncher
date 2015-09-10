@@ -22,6 +22,7 @@
 				<li><span class="button title">Administration</span></li>
 				<li><a class="button<?php echo isPage($page, 'accounts'); ?>" href="?page=accounts">Accounts</a></li>
 				<li><a class="button<?php echo isPage($page, 'characters'); ?>" href="?page=characters">Characters</a></li>
+				<li><a class="button<?php echo isPage($page, 'instances'); ?>" href="?page=instances">Instances</a></li>
 				<li><a class="button<?php echo isPage($page, 'sessions'); ?>" href="?page=sessions">Sessions</a></li>
 			</ul>
 			<?php } ?>
@@ -79,6 +80,9 @@
 			break;
 		case 'characters':
 			include('views/characters.php');
+			break;
+		case 'instances':
+			include ('views/instances.php');
 			break;
 		default:
 			include('views/404.php');
