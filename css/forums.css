@@ -1,0 +1,50 @@
+.forums-post{
+	min-height: 200px;
+}
+
+.forums-post>.forums-post-header{
+	background-color: #304068;
+	color: #FFF;
+	padding: 4px;
+}
+
+.forums-post>.forums-post-header>span.num{
+	min-width:120px;
+	display: inline-block;
+}
+
+.forums-post>.forums-post-content, .forums-post>.forums-post-blank{
+	background-color: #FFFFFF;
+	color: #000;
+}
+
+.forums-post>.forums-post-blank:nth-of-type(2n+1){
+	background-color: #DDDDDD;
+}
+
+.forums-post>.forums-post-content{
+	min-height: 170px;
+}
+
+.forums-post>.forums-post-content>.forums-post-author{
+	float: left;
+	width: 125px;
+	padding: 5px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.forums-post>.forums-post-content>.forums-post-text, .forums-post>.forums-post-blank>.forums-post-text{
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.forums-post>.forums-post-content>.forums-post-author+.forums-post-text{
+	margin-left: 125px;
+}
+
+.forums-post textarea{
+	 resize: vertical;
+	 height: 150px;
+	 min-height: 136px;
+}

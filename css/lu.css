@@ -17,6 +17,35 @@ hr{
 
 html{
 	font-family: LU_Font, sans-serif;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 2em;
+	right: 0;
+}
+
+html>body>#disclaimer{
+	display: block;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	min-height: 2em;
+	background-color: #000;
+	color: #FFF;
+	box-sizing: border-box;
+	vertical-align: middle;
+	padding: 0.3em;
+	/*white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+}
+
+html>body>#disclaimer:not(:hover){
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 html.map {
@@ -38,6 +67,7 @@ html.mythran{
 	-moz-background-size: contain;
 	-o-background-size: contain;
 	background-size: contain;
+	font-family: Arial, sans-serif !important;
 }
 
 html.mythran>body{
@@ -108,6 +138,8 @@ html.mythran>body{
 	box-sizing: border-box;
 	vertical-align: top;
 	position: relative;
+	border-radius: 25px;
+	background-color: #D90;
 }
 
 .box .btn{
@@ -253,7 +285,12 @@ ul.nav>li:not(:last-child){
 	position: fixed;
 	left: 0;
 	top: 0;
-	bottom: 0;
+	bottom: 2em;
+	width: 200px;
+	overflow: auto;
+}
+
+.menu>*{
 	width: 175px;
 }
 
@@ -431,6 +468,10 @@ input[type="submit"]:active{
 	padding: 40px;
 }
 
+.wrapper-content a{
+	color: #55F;
+}
+
 .wrapper-footer{
 	margin: 0 40px;
 	background-color: #FC0;
@@ -512,4 +553,20 @@ table.th-right th{
 .tb-input td>input[type="checkbox"]:checked + label:before{
 	content:"YES";
 	background-color: #D00;
+}
+
+a.pager{
+	display: inline-block;
+	padding: 5px 10px;
+	border: 3px solid #000;
+	background-color: #FFF;
+	color: #000;
+	font-wight: bold;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+a.pager.current{
+	background-color: #F00;
+	color: #FFF;
 }

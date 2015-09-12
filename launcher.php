@@ -10,6 +10,8 @@
 				<div class="box">
 					<h3>Welcome to LUNI:</h3><h4>LEGO Universe, Newly Imagined!</h4>
 				</div>
+				<br>
+				<span style="color: #FFF">The LEGO Group has not endorsed or authorized the operation of this game and is not liable for any safety issues in relation to the operation of this game.</span>
 				
 				<div class="alert bottom">
 					<h4 style="color: #FF0000;">NOTE: Be aware that this server is in EARLY development.</h4>
