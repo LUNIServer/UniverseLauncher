@@ -1,0 +1,30 @@
+.widget-logo{
+	border: 0 !important;
+	width: 117px !important;
+	height: 117px !important;
+	display: block;
+	background-size: 107px 107px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-radius: 0;
+	color: rgba(255,255,255,0) !important;
+}
+
+.widget-logo.nexus{
+	position: absolute;
+	left:94px;
+	top: 65px;
+	background-color: rgba(0,0,0,0) !important;
+	border-radius: 50%;
+	width: 90px !important;
+	height: 95px !important;
+	background-position: bottom center;
+}
+
+.widget-logo:active{
+	background-color: #000 !important;
+}
+
+.widget-logo.nexus:active{
+	background-color: rgba(0,0,0,0) !important;
+}

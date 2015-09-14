@@ -303,9 +303,9 @@ ul.nav>li:not(:last-child){
 }
 
 .button{
-	border: 1px solid #AAB;
+	border: 1px solid #668;
 	color: #444;
-	background-color: #AAB;
+	background-color: #668;
 }
 
 .button.selected{
@@ -361,51 +361,6 @@ a.button:hover{
 	background-color: #FFF !important;
 }
 
-.logo{
-	background-image: url('../img/nexus-force-logo.png');
-}
-
-.assembly .logo, .assembly.logo{
-	background-image: url('../img/WikiAvAssembly1.png');
-}
-
-.sentinel .logo, .sentinel.logo{
-	background-image: url('../img/WikiAvSentinels1.png');
-}
-
-.paradox .logo, .paradox.logo{
-	background-image: url('../img/WikiAvParadox1.png');
-}
-
-.ventureleague .logo, .ventureleague.logo{
-	background-image: url('../img/WikiAvVenture1.png');
-}
-
-.pane{
-	color: #444;
-	background-color: #AAB;
-}
-
-.assembly .pane, .assembly.pane{
-	background-color: #CC5F00;
-	color: #FFF;
-}
-
-.sentinel .pane, .sentinel.pane{
-	background-color: #0041A3;
-	color: #FFF;
-}
-
-.paradox .pane, .paradox.pane{
-	background-color: #600;
-	color: #FFF;
-}
-
-.ventureleague .pane, .ventureleague.pane{
-	background-color: #225600;
-	color: #FFF;
-}
-
 .wrapper{
 	width: 90%;
 	max-width: 1000px;
@@ -429,15 +384,17 @@ input{
 	font-family: LU_Font, sans-serif;
 	border: 0;
 	box-sizing: border-box;
-	padding: 0 5px;
-	border-radius: 7.5px;
+	padding: 0 0.5em;
+	border-radius: 1em;
+	font-size: 1em;
 }
 
 input[type="submit"]{
 	background-color: #5AF;
+	border: 2px solid #5AF;
 	float: right;
 	box-sizing: border-box;
-	height: 25px;
+	height: 1.5em;
 }
 
 .wrapper input[type="submit"]{
@@ -446,12 +403,10 @@ input[type="submit"]{
 
 input[type="submit"]:hover{
 	border: 2px solid #000;
-	padding-right: 3px;
-	margin-left: -2px;
 }
 
 .wrapper input[type="submit"]:hover{
-	padding-right: 18px;
+
 }
 
 input[type="submit"]:active{

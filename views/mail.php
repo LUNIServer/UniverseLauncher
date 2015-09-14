@@ -1,8 +1,8 @@
-				<div class="box">
+				<div class="box pane">
 		<?php
 		if (isset($_SESSION['char_id'])){
 		?>
-			<h1 style="color:#000; margin: 0;">Mail</h1>
+			<h1 style="margin: 0;">Mail</h1>
 		<?php
 				$sql = "SELECT * FROM `mails` WHERE `recipient_id` = '" . $_SESSION['char_id'] . "';";
 				$res = $mysql->query($sql);

@@ -67,7 +67,7 @@ class Login
 
                 // database query, getting all the info of the selected user (allows login via email address in the
                 // username field)
-                $sql = "SELECT name, email, password, rank
+                $sql = "SELECT id, name, email, password, rank
                         FROM accounts
                         WHERE name = '" . $user_name . "' OR email = '" . $user_name . "';";
                 $result_of_login_check = $this->db_connection->query($sql);
@@ -83,7 +83,8 @@ class Login
                     if (md5($_POST['user_password']) == $result_row->password) {
 
                         // write user data into PHP SESSION (a file on your server)
-                        $_SESSION['user_name'] = $result_row->name;
+                        $_SESSION['user_id'] = $result_row->id;
+						$_SESSION['user_name'] = $result_row->name;
                         $_SESSION['user_email'] = $result_row->email;
                         $_SESSION['user_login_status'] = 1;
 						$_SESSION['rank'] = $result_row->rank;

@@ -6,12 +6,28 @@
 	require_once("classes/Login.php");
 	
 	$login = new Login();
+	
+	if (!isset($_SESSION['theme'])) $_SESSION['theme'] = "";
+	if ($login->isUserLoggedIn()){
+		if (isset($_POST['theme'])){
+			if ($_POST['theme'] == "assembly") $_SESSION['theme'] = "assembly";
+			if ($_POST['theme'] == "paradox") $_SESSION['theme'] = "paradox";
+			if ($_POST['theme'] == "sentinel") $_SESSION['theme'] = "sentinel";
+			if ($_POST['theme'] == "ventureleague") $_SESSION['theme'] = "ventureleague";
+			if ($_POST['theme'] == "nexus") $_SESSION['theme'] = "";
+		}
+		$theme = $_SESSION['theme'];
+	}else{
+		$theme = "sentinel";
+	}
 ?><!DOCTYPE html>
-<html style="min-width: 350px; background-image: url('img/bg.png'); overflow: hidden;">
+<html style="min-width: 350px; overflow: hidden;" class="themed<?php if ($theme != "") echo " " . $theme; ?>">
 	<head>
 		<title>LUNIServer</title>
 		<link rel="stylesheet" href="css/lu.css?a=0" type="text/css"/>
-		<link rel="stylesheet" href="css/forums.css?a=0" type="text/css"/>
+		<link rel="stylesheet" href="css/forums.css" type="text/css"/>
+		<link rel="stylesheet" href="css/dashboard.css" type="text/css"/>
+		<link rel="stylesheet" href="css/factions.css" type="text/css"/>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
 	</head>
 	<body style="overflow:auto; height: 100%; margin: 0;">

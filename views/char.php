@@ -1,4 +1,4 @@
-		<div class="box">
+		<div class="box pane">
 <?php
 	if (isset($_SESSION['char_id'])){
 		$sql = "SELECT `name`, `objectID`, `unapprovedName`, `lastZoneId`, `mapInstance`, `mapClone`, `x`, `y`, `z` FROM `characters` WHERE `objectID` = '" . $_SESSION['char_id'] . "'";
@@ -9,7 +9,7 @@
 			$uname = $obj->unapprovedName;
 			$name = $obj->name;
 ?>
-		<h1 style="color:#000; margin: 0;"><?php echo $name . " "; if ($uname != "") echo "(" . $uname . ") "?></h1>
+		<h1 style="margin: 0;"><?php echo $name . " "; if ($uname != "") echo "(" . $uname . ") "?></h1>
 		<h3>[ObjectID: <?php echo $objid; ?>]</h3>
 		<br/>
 		<span>Zone: <?php echo $obj->lastZoneId; ?>, Instance: <?php echo $obj->mapInstance; ?>, Clone: <?php echo $obj->mapClone; ?>, Position: (<?php echo $obj->x . "|" . $obj->y . "|" . $obj->z; ?>)</span><br/>

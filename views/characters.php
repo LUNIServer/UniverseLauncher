@@ -1,6 +1,6 @@
-<div class="box">
+<div class="box pane">
 	<?php if (isset($_SESSION['rank']) && $_SESSION['rank'] > 1){ ?>
-	<h1 style="color:#000; margin: 0;">Characters</h1>
+	<h1 style="margin: 0;">Characters</h1>
 	<br/>
 	<?php
 		if (isset($_GET['approve_id']) && preg_match("/^[0-9]*$/", $_GET['approve_id']) == 1){

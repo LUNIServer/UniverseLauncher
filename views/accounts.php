@@ -1,9 +1,9 @@
 <?php require_once('libraries/accounts.php'); ?>
-<div class="box">
+<div class="box pane">
 	<?php if (isset($_SESSION['rank']) && $_SESSION['rank'] > 1){ 
 		$return = updateUser($mysql);
 	?>
-	<h1 style="color:#000; margin: 0;">Accounts</h1>
+	<h1 style="margin: 0;">Accounts</h1>
 	<br/>
 	<div style="display: inline-block; vertical-align: top; margin-bottom: 10px;">
 		<table style="display: inline-table;">
@@ -20,8 +20,8 @@
 	?></td><td><?php echo $obj->name;
 	?></td><td><?php echo $obj->email;
 	?></td><td><?php echo getRankName($obj->rank);
-	?></td><td style="background-color: <?php if ($obj->locked > 0) echo "rgba(221,0,0,0.2)"; else echo "rgba(34,221,34,0.2)"; ?>;"><?php if ($obj->locked > 0) echo "YES"; else echo "NO";
-	?></td><td style="background-color: <?php if ($obj->banned > 0) echo "rgba(221,0,0,0.2)"; else echo "rgba(34,221,34,0.2)"; ?>;"><?php if ($obj->banned > 0) echo "YES"; else echo "NO";
+	?></td><td style="background-color: <?php if ($obj->locked > 0) echo "rgba(221,0,0,0.6)"; else echo "rgba(34,221,34,0.6)"; ?>;"><?php if ($obj->locked > 0) echo "YES"; else echo "NO";
+	?></td><td style="background-color: <?php if ($obj->banned > 0) echo "rgba(221,0,0,0.6)"; else echo "rgba(34,221,34,0.6)"; ?>;"><?php if ($obj->banned > 0) echo "YES"; else echo "NO";
 	?></td><td>
 		<a href="?page=<?php echo $page; ?>&account=<?php echo $obj->name; ?>">Edit</a>
 	</td></tr>

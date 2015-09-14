@@ -1,7 +1,7 @@
 <?php require_once('libraries/sessions.php'); ?>
-<div class="box">
+<div class="box pane">
 	<?php if (isset($_SESSION['rank']) && $_SESSION['rank'] > 1){ ?>
-	<h1 style="color:#000; margin: 0;">Sessions</h1>
+	<h1 style="margin: 0;">Sessions</h1>
 	<br/>
 	<?php 
 		$cleared = false;

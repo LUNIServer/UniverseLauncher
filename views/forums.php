@@ -4,8 +4,8 @@ require_once('libraries/php-markdown-lib/Markdown.php');
 require_once('libraries/accounts.php');
 use \Michelf\Markdown;
 ?>
-		<div class="box">
-			<h1 style="color:#000; margin: 0;">Forums</h1>
+		<div class="box pane">
+			<h1 style="margin: 0;">Forums</h1>
 <?php
 	if (isset($_POST['title']) && $_POST['title'] != "" && isset($_POST['submit']) && $_POST['submit'] == 'Submit Topic'){
 		$sql = "INSERT INTO topics (name) VALUES ('" . $mysql->real_escape_string($_POST['title']) . "')";

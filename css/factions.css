@@ -1,0 +1,108 @@
+.logo{
+	background-image: url('../img/nexus-force-logo.png');
+}
+
+.assembly .logo{
+	background-image: url('../img/WikiAvAssembly1.png');
+}
+
+.sentinel .logo{
+	background-image: url('../img/WikiAvSentinels1.png');
+}
+
+.paradox .logo{
+	background-image: url('../img/WikiAvParadox1.png');
+}
+
+.ventureleague .logo{
+	background-image: url('../img/WikiAvVenture1.png');
+}
+
+.assembly.logo{
+	background-image: url('../img/WikiAvAssembly1.png');
+}
+
+.sentinel.logo{
+	background-image: url('../img/WikiAvSentinels1.png');
+}
+
+.paradox.logo{
+	background-image: url('../img/WikiAvParadox1.png');
+}
+
+.ventureleague.logo{
+	background-image: url('../img/WikiAvVenture1.png');
+}
+
+.nexus.logo{
+	background-image: url('../img/nexus-force-logo.png');
+}
+
+.pane{
+	color: #FFF;
+	background-color: #668;
+}
+
+.pane a{
+	color: #FFF;
+}
+
+.assembly .pane, .assembly.pane{
+	background-color: #CC5F00;
+	color: #FFF;
+}
+
+.sentinel .pane, .sentinel.pane{
+	background-color: #0041A3;
+	color: #FFF;
+}
+
+.paradox .pane, .paradox.pane{
+	background-color: #600;
+	color: #FFF;
+}
+
+.ventureleague .pane, .ventureleague.pane{
+	background-color: #225600;
+	color: #FFF;
+}
+
+.assembly.pane{
+	background-color: #CC5F00;
+}
+
+.sentinel.pane{
+	background-color: #0041A3;
+}
+
+.paradox.pane{
+	background-color: #600;
+}
+
+.ventureleague.pane{
+	background-color: #225600;
+}
+
+.nexus.pane{
+	background-color: #AAB;
+}
+
+.themed{
+	background-image: url('../img/bg2.png');
+}
+
+.themed.sentinel{
+	background-image: url('../img/bg.png');
+}
+
+.themed.assembly{
+	background-image: url('../img/bga2.png');
+}
+
+.themed.ventureleague{
+	background-image: url('../img/bgv2.png');
+}
+
+.themed.paradox{
+	background-image: url('../img/bgp.png');
+}

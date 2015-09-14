@@ -76,14 +76,17 @@
 				LUNI is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> License
 			</div>
 			<div class="widget box" style="background-color: #BCB;">
-				<div style="display: flex">
-					<div style="padding: 5px; width: 107px; height: 107px !important; border-top-left-radius: 10px;" class="assembly pane"><img src="img/WikiAvAssembly1.png" style="width: 107px; height: 107px !important;"/></div>
-					<div style="padding: 5px; width: 107px; height: 107px !important; border-top-right-radius: 10px;" class="sentinel pane"><img src="img/WikiAvSentinels1.png" style="width: 107px; height: 107px !important;"/></div>
-				</div>
-				<div style="display: flex">
-					<div style="padding: 5px; width: 107px; height: 107px !important; border-bottom-left-radius: 10px;" class="ventureleague pane"><img src="img/WikiAvVenture1.png" style="width: 107px; height: 107px !important;"/></div>
-					<div style="padding: 5px; width: 107px; height: 107px !important; border-bottom-right-radius: 10px;" class="paradox pane"><img src="img/WikiAvParadox1.png" style="width: 107px; height: 107px !important;"/></div>
-				</div>
+				<form method="POST">
+					<div style="display: flex">
+						<input type="submit" name="theme" value="assembly" class="assembly logo widget-logo pane" style="border-top-left-radius: 10px;"/>
+						<input type="submit" name="theme" value="sentinel" class="sentinel logo widget-logo pane" style="border-top-right-radius: 10px;"/>
+					</div>
+					<div style="display: flex">
+						<input type="submit" name="theme" value="ventureleague" class="ventureleague logo widget-logo pane" style="border-bottom-left-radius: 10px;"/>
+						<input type="submit" name="theme" value="paradox" class="paradox logo widget-logo pane" style="border-bottom-right-radius: 10px;"/>
+					</div>
+					<input type="submit" name="theme" value="nexus" class="pane nexus logo widget-logo" style=""/>
+				</form>
 			</div>
 			<!--<div class="widget box">
 				Widget 1

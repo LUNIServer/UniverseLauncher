@@ -2,6 +2,10 @@
 	min-height: 200px;
 }
 
+.forums-post>.forums-post-content a, .forums-post>.forums-post-blank a{
+	color: #222;
+}
+
 .forums-post>.forums-post-header{
 	background-color: #304068;
 	color: #FFF;
