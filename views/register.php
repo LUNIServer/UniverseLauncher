@@ -4,7 +4,7 @@
 	</div>
 	<div class="wrapper-content">
 		<!-- register form -->
-		<form method="post" action="?page=register" name="registerform">
+		<form method="post" action="?page=register" name="registerform" style="margin: 0;">
 
 			<!-- the user name input field uses a HTML5 pattern check -->
 			<label for="login_input_username">Username <span class="small">(only letters and numbers, 2 to 64 characters)</span></label><br>
@@ -19,27 +19,26 @@
 
 			<label for="login_input_password_repeat">Repeat password</label><br>
 			<input id="login_input_password_repeat" class="login_input" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" /><br>
-			<input type="submit"  name="register" value="Register" />
+			<div style="height: 3px;">&nbsp;</div>
+			<span class="small">
+			<?php
+			// show potential errors / feedback (from registration object)
+			if (isset($registration)) {
+				if ($registration->errors) {
+					foreach ($registration->errors as $error) {
+						echo $error;
+					}
+				}
+				if ($registration->messages) {
+					foreach ($registration->messages as $message) {
+						echo $message;
+					}
+				}
+			}
+			?>
+			</span>
+			<div style="text-align: right;"><input type="submit"  name="register" value="Register" /></div>
 		</form>
-
-		<span class="small">
-			&nbsp;
-		<?php
-		// show potential errors / feedback (from registration object)
-		if (isset($registration)) {
-			if ($registration->errors) {
-				foreach ($registration->errors as $error) {
-					echo $error;
-				}
-			}
-			if ($registration->messages) {
-				foreach ($registration->messages as $message) {
-					echo $message;
-				}
-			}
-		}
-		?>
-		</span>
 	</div>
 	<div class="wrapper-footer">
 		<a href="?">Back to Login Page</a>

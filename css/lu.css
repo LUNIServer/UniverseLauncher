@@ -380,7 +380,7 @@ a.button:hover{
 	border-radius: 30px;
 }
 
-input{
+input, button{
 	font-family: LU_Font, sans-serif;
 	border: 0;
 	box-sizing: border-box;
@@ -389,27 +389,27 @@ input{
 	font-size: 1em;
 }
 
-input[type="submit"]{
+input[type="submit"], button[type="submit"]{
 	background-color: #5AF;
 	border: 2px solid #5AF;
-	float: right;
+	/*float: right;*/
 	box-sizing: border-box;
 	height: 1.5em;
 }
 
 .wrapper input[type="submit"]{
-	height: 60px;
+	/*height: 60px;*/
 }
 
-input[type="submit"]:hover{
+input[type="submit"]:hover, button[type="submit"]:hover{
 	border: 2px solid #000;
 }
 
-.wrapper input[type="submit"]:hover{
+.wrapper input[type="submit"]:hover, .wrapper button[type="submit"]:hover{
 
 }
 
-input[type="submit"]:active{
+input[type="submit"]:active, button[type="submit"]:active{
 	background-color: #39F;
 }
 
@@ -515,7 +515,7 @@ a.pager{
 	padding: 5px 10px;
 	border: 3px solid #000;
 	background-color: #FFF;
-	color: #000;
+	color: #000 !important;
 	font-wight: bold;
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -523,5 +523,5 @@ a.pager{
 
 a.pager.current{
 	background-color: #F00;
-	color: #FFF;
+	color: #FFF !important;
 }

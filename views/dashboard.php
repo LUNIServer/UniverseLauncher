@@ -57,7 +57,7 @@
 				<b>LUNI:</b>
 				<ul style="margin: 0;">
 					<li><a href="http://luniserver.com/">LUNI Website</a></li>
-					<li><a href="https://github.com/dsuser97/LUNI-Latest-Dev/">LUNI Github</a></li>
+					<li><a href="https://github.com/LUNIServer/UniverseServer/">LUNI Github</a></li>
 					<li><a href="http://luni.wikia.com">LUNI Wikia</a></li>
 					<li><a href="http://luni-wiki.wikispaces.com">LUNI Wikispaces</a></li>
 				</ul>

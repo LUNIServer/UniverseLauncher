@@ -1,1 +1,1 @@
-<h1>The page you requested cannot be found on this server</h1>
+<div class="box pane"><h1 style="margin:0;">The page you requested cannot be found on this server</h1></div>

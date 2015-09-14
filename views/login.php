@@ -6,7 +6,7 @@
 					<div class="table" border="0" style="width: 100%;">
 						<div class="table-row"><div class="table-cell">Username:</div><div class="table-cell"><input type="text" style="width: 100%" id="login_input_username" class="login_input" name="user_name" required /></div></div>
 						<div class="table-row"><div class="table-cell">Password:</div><div class="table-cell"><input type="password" style="width: 100%" id="login_input_password" class="login_input" name="user_password" autocomplete="off" required /></div></div>
-						<div class="table-row"><div class="table-cell"></div><div class="table-cell"><input type="submit" name="login" value="LOGIN"/></div></div>
+						<div class="table-row"><div class="table-cell"></div><div class="table-cell" style="text-align: right;"><input type="submit" name="login" value="LOGIN"/></div></div>
 					</div>
 				</form>
 				<div style="font-size: 14pt; height: 25px;">

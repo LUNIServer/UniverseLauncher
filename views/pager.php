@@ -28,7 +28,7 @@
 				<li><a class="button<?php echo isPage($page, 'sessions'); ?>" href="?page=sessions">Sessions</a></li>
 			</ul>
 			<?php } ?><ul class="nav">
-				<li><a class="button<?php echo isPage($page, 'help'); ?>" href="?page=Help">Help</a></li>
+				<li><a class="button<?php echo isPage($page, 'help'); ?>" href="?page=help">Help</a></li>
 			</ul>
 			<ul class="nav">
 <?php

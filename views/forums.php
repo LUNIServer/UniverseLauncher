@@ -45,7 +45,7 @@ use \Michelf\Markdown;
 					}
 				}
 				
-				$per_page = 5;
+				$per_page = 10;
 				$cp = 0;
 				if (isset($_GET['cp']) && is_numeric($_GET['cp'])){
 					$cp = (int) $_GET['cp'];
@@ -110,8 +110,7 @@ use \Michelf\Markdown;
 				<div class="forums-post-content">
 					<div class="forums-post-text">
 						<textarea name="text" style="width: 100%; box-sizing: border-box;"></textarea>
-						<input type="submit" name="submit" value="Submit Reply">
-						<br><br>
+						<div style="text-align: right; padding-top: 5px;"><input type="submit" name="submit" value="Submit Reply"></div>
 					</div>
 				</div>
 			</form>

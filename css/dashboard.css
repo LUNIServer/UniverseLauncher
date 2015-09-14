@@ -27,4 +27,5 @@
 
 .widget-logo.nexus:active{
 	background-color: rgba(0,0,0,0) !important;
+	background-image: url('../img/nexus-force-logo-black.png');
 }
