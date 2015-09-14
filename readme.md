@@ -7,6 +7,6 @@ has a basic forum functionality and 5 color themes.
 Uses an adapted version of
 http://www.php-login.net / MINIMAL VERSION
 A simple, clean and secure PHP Login Script
-@author Panique
-@link https://github.com/panique/php-login-minimal/
-@license http://opensource.org/licenses/MIT MIT License
+* @author Panique
+* @link https://github.com/panique/php-login-minimal/
+* @license http://opensource.org/licenses/MIT MIT License
