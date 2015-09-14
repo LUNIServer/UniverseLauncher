@@ -1,8 +1,6 @@
 <?php
-require_once('libraries/php-markdown-lib/MarkdownInterface.php');
-require_once('libraries/php-markdown-lib/Markdown.php');
 require_once('libraries/accounts.php');
-use \Michelf\Markdown;
+require_once('libraries/forums.php');
 ?>
 		<div class="box pane">
 			<h1 style="margin: 0;">Forums</h1>
@@ -75,7 +73,7 @@ use \Michelf\Markdown;
 						$obj_post = $res_posts->fetch_object();
 ?>
 			<div class="forums-post">
-				<div class="forums-post-header"><span class="num">#<?php echo $obj_post->id; ?></span> <?php echo $obj_post->sent_time . " - " . htmlspecialchars($obj_post->subject); ?></div>
+				<?php postHeader($obj_post, $page) ?>
 				<div class="forums-post-content">
 					<div class="forums-post-author">
 						<p>
@@ -94,8 +92,7 @@ use \Michelf\Markdown;
 					</div>
 					<div class="forums-post-text">
 					<?php
-						$my_html = Markdown::defaultTransform($obj_post->text);
-						echo $my_html;
+						echo transform($obj_post->text);
 					?>
 					</div>
 				</div>
@@ -132,6 +129,84 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 				}
 			}
 		}
+	}
+	
+	if (isset($_GET['post']) && is_numeric($_GET['post'])){
+		$id = (int) $_GET['post'];
+		$sql = "SELECT * FROM `mails` WHERE `id` = '" . $id . "'";
+		$res = $mysql->query($sql);
+		if ($res != NULL && $res->num_rows > 0){
+			$obj = $res->fetch_object();
+			
+			//ost exists
+			$sql2 = "SELECT * FROM `topics` WHERE `id` = '" . $obj->recipient_id . "'";
+			$res2 = $mysql->query($sql2);
+			if ($res2 != NULL && $res2->num_rows > 0){
+				$obj2 = $res2->fetch_object();
+?>
+			<h2 style="margin: 0;">Topic: <?php echo $obj2->name; ?></h2>
+			<br>
+			<div class="forums-post">
+				<?php postHeader($obj, $page) ?>
+				<div class="forums-post-content">
+					<div class="forums-post-author">
+						<?php
+							$email = "";
+							$rank = "UNKNOWN";
+							$sql3 = "SELECT `email`, `rank` FROM `accounts` WHERE `name` = '" . $obj->sender . "'";
+							$res3 = $mysql->query($sql3);
+							if ($res != NULL && $res->num_rows > 0){
+								$obj3 = $res3->fetch_object();
+								$email = $obj3->email;
+								$rank = getRankName($obj3->rank);
+							}
+							$hash = md5(strtolower(trim( $email)));
+						?>
+						<p>
+							<img src="http://www.gravatar.com/avatar/<?php echo $hash; ?>?d=identicon" /><br>
+							<span><?php  echo $rank; ?></span><br>
+							<b><?php echo $obj->sender; ?></b>
+						</p>
+					</div>
+					<div class="forums-post-text">
+<?php
+						$text = $obj->text;
+						$f2 = true;
+						if ($_SESSION['rank'] > 0){
+							if (isset($_POST['edit']) && $_POST['edit'] == 'update'){
+								if (isset($_POST['text'])){
+									$text = $_POST['text'];
+									$sql4 = "UPDATE mails SET `text` = '" . $mysql->real_escape_string($text) . "' WHERE `id` = '" . $id . "'";
+									$mysql->query($sql4);
+								}
+							}
+							
+							if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+								$f2 = false;
+?>
+						<form method="POST" action="?page=<?php echo $page; ?>&post=<?php echo $id; ?>">
+							<textarea name="text" style="width: 100%; box-sizing: border-box;"><?php echo htmlspecialchars($obj->text); ?></textarea>
+							<div style="text-align: right; padding-top: 5px;">
+								<button name="edit" type="submit" value="update" style="height: 2em;">Update Post</button>
+							</div>
+						</form>
+<?php
+							}
+						}
+						
+						if ($f2) echo transform($text); ?>
+					</div>
+				</div>
+			</div>
+<?php
+			}else{
+				echo "There is no forums post with the id " . $id;
+			}			
+		}else{
+			echo "There is no post with the id " . $id;
+		}
+		
+		$flag = true;
 	}
 	
 	if (!$flag){

@@ -10,11 +10,13 @@
 	background-color: #304068;
 	color: #FFF;
 	padding: 4px;
+	display: flex;
 }
 
 .forums-post>.forums-post-header>span.num{
 	min-width:120px;
 	display: inline-block;
+	flex: 0 1 120px;
 }
 
 .forums-post>.forums-post-content, .forums-post>.forums-post-blank{
