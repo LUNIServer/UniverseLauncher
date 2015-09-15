@@ -5,19 +5,30 @@ require_once('libraries/forums.php');
 		<div class="box pane">
 			<h1 style="margin: 0;">Forums</h1>
 <?php
+	$topic_id = -1;
+
 	if (isset($_POST['title']) && $_POST['title'] != "" && isset($_POST['submit']) && $_POST['submit'] == 'Submit Topic'){
-		$sql = "INSERT INTO topics (name) VALUES ('" . $mysql->real_escape_string($_POST['title']) . "')";
+		$min_rank = 0;
+		if (isset($_POST['min_rank']) && is_numeric($_POST['min_rank'])){
+			$min_rank = (int) $_POST['min_rank'];
+			if ($min_rank > $_SESSION['rank'] || $min_rank < 0){
+				$min_rank = 0;
+			}
+		}
+		$sql = "INSERT INTO topics (name, min_rank) VALUES ('" . $mysql->real_escape_string($_POST['title']) . "', '" . $min_rank . "')";
+		
 		$mysql->query($sql);
+		$topic_id = $mysql->insert_id; 
 	}
 	
 	$flag = false;
-	if (isset($_GET['topic']) && is_numeric($_GET['topic'])){
-		$topic_id = $_GET['topic'];
-		$sql3 = "SELECT name FROM topics WHERE id = " . $topic_id;
+	if ((isset($_GET['topic']) && is_numeric($_GET['topic'])) || $topic_id > -1){
+		if ($topic_id == -1) $topic_id = $_GET['topic'];
+		$sql3 = "SELECT `name`, `min_rank` FROM topics WHERE id = " . $topic_id;
 		$res3 = $mysql->query($sql3);
 		if ($res3 != NULL){
 			$obj3=$res3->fetch_object();
-			if (!empty($obj3->name)){
+			if (!empty($obj3->name) && ($obj3->min_rank <= $_SESSION['rank'])){
 				$flag = true;
 				
 				$name = $_SESSION['user_name'];
@@ -27,7 +38,7 @@ require_once('libraries/forums.php');
 					$mysql->query($sql);
 				}
 ?>
-			<h2 style="margin: 3px;">Topic: <?php echo $obj3->name; ?></h2>
+			<?php topicHeader($obj3->name, $obj3->min_rank); ?>
 			<br>
 <?php
 				$taccounts = array();
@@ -66,7 +77,7 @@ require_once('libraries/forums.php');
 					$page_count = ((int)(($comment_count - 1) / $per_page)) + 1;
 				}
 				
-				$sql_posts = "SELECT * FROM mails WHERE recipient_id = '" . $topic_id . "' LIMIT " . $offset . ", " . $per_page;
+				$sql_posts = "SELECT * FROM mails WHERE recipient_id = '" . $topic_id . "' ORDER BY `sent_time` LIMIT " . $offset . ", " . $per_page;
 				$res_posts = $mysql->query($sql_posts);
 				if ($res_posts != NULL){
 					for ($k = 0; $k < $res_posts->num_rows; $k++){
@@ -131,7 +142,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 		}
 	}
 	
-	if (isset($_GET['post']) && is_numeric($_GET['post'])){
+	if (!$flag && isset($_GET['post']) && is_numeric($_GET['post'])){
 		$id = (int) $_GET['post'];
 		$sql = "SELECT * FROM `mails` WHERE `id` = '" . $id . "'";
 		$res = $mysql->query($sql);
@@ -143,15 +154,40 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 			$res2 = $mysql->query($sql2);
 			if ($res2 != NULL && $res2->num_rows > 0){
 				$obj2 = $res2->fetch_object();
+				if ($obj2->min_rank <= $_SESSION['rank']){
 ?>
-			<h2 style="margin: 0;">Topic: <?php echo $obj2->name; ?></h2>
+			<?php topicHeader($obj2->name, $obj2->min_rank); ?>
 			<br>
+<?php
+				$delete = false;
+				if ($_SESSION['rank'] > 0){
+					if (isset($_GET['action']) && $_GET['action'] == 'delete'){
+						if(isset($_POST['delete']) && $_POST['delete'] == "confirm"){
+						$sql5 = "DELETE FROM `mails` WHERE `id` = '" . $obj->id . "'";
+						$mysql->query($sql5);
+?>
+			<span class="highlight">The following post has been deleted!</span><br>
+<?php
+						}else{
+?>
+			<span class="highlight">Please press confirm to delete the following post.</span><br>
+<?php
+							$delete = true;
+						}
+?>
+			<br>
+<?php
+					}
+				}
+?>
+			
 			<div class="forums-post">
 				<?php postHeader($obj, $page) ?>
 				<div class="forums-post-content">
 					<div class="forums-post-author">
 						<?php
 							$email = "";
+							$hash = "";
 							$rank = "UNKNOWN";
 							$sql3 = "SELECT `email`, `rank` FROM `accounts` WHERE `name` = '" . $obj->sender . "'";
 							$res3 = $mysql->query($sql3);
@@ -160,7 +196,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 								$email = $obj3->email;
 								$rank = getRankName($obj3->rank);
 							}
-							$hash = md5(strtolower(trim( $email)));
+							if ($email != "") $hash = md5(strtolower(trim( $email)));
 						?>
 						<p>
 							<img src="http://www.gravatar.com/avatar/<?php echo $hash; ?>?d=identicon" /><br>
@@ -194,23 +230,41 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 							}
 						}
 						
-						if ($f2) echo transform($text); ?>
+						if ($f2){
+?>
+						<div style="min-height: 100px;">
+<?php
+							echo transform($text);
+?>
+						</div>
+<?php
+							if ($delete){
+?>
+						<form method="POST" action="?page=<?php echo $page; ?>&post=<?php echo $id; ?>&action=delete" style="text-align: right; padding-top: 5px;">
+							<button name="delete" type="submit" value="confirm" style="height: 2em;">Confirm Delete</button>&nbsp;
+						</form>
+<?php
+							}
+						}
+?>
 					</div>
 				</div>
 			</div>
 <?php
+				}else{
+					echo "There is no post with the id " . $id;
+				}
 			}else{
-				echo "There is no forums post with the id " . $id;
+				echo "There is no post with the id " . $id;
 			}			
 		}else{
 			echo "There is no post with the id " . $id;
 		}
-		
 		$flag = true;
 	}
 	
 	if (!$flag){
-		$sql = "SELECT topics.name, topics.id FROM topics";
+		$sql = "SELECT name, id, min_rank FROM topics WHERE `min_rank` <= '" . $_SESSION['rank'] . "'";
 		$res = $mysql->query($sql);
 		if ($res != NULL){
 			if ($res->num_rows > 0){
@@ -225,15 +279,19 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 					$obj = $res->fetch_object();
 ?>
 				<div class="forums-post-blank">
-					<div class="forums-post-text">
-						<a href="?page=<?php echo $page . "&topic=" . $obj->id; ?>"><?php echo htmlspecialchars($obj->name); ?></a>
+					<div class="forums-post-text" style="display: flex;">
+						<span style="flex: 1 1 100%;"><a href="?page=<?php echo $page . "&topic=" . $obj->id; ?>"><?php
+						if ($obj->min_rank > 0){
+							echo "[" . getRankName($obj->min_rank) . "S] ";
+						}
+						echo htmlspecialchars($obj->name); ?></a></span>
 				
 <?php
-					$sql2 = "SELECT COUNT(id) as cnt FROM mails WHERE recipient_id = " . $obj->id;
+					$sql2 = "SELECT COUNT(id) as cnt, MAX(sent_time) as last FROM mails WHERE recipient_id = " . $obj->id;
 					$res2 = $mysql->query($sql2);
 					if ($res2 != NULL){
 						$obj2 = $res2->fetch_object();
-						echo " (" . $obj2->cnt . " Posts)";
+						?><span style="white-space: nowrap;">(<?php echo $obj2->cnt; ?> Posts<?php if ($obj2->last) { ?>, Last Post: <?php echo $obj2->last; } ?>)</span><?php
 					}
 ?>
 					</div>
@@ -249,10 +307,30 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 			</div>
 			
 			<br>
-			<form method="POST" class="wrapper-content" style="color: #FFF; padding: 10px 20px; display: flex;">
-				<span style="flex: 1 1 20%;">Create new Topic: Name: </span>&nbsp;
-				<input type="text" name="title" style="min-width: 50%; flex: 1 1 95%">&nbsp;
-				<input type="submit" name="submit" value="Submit Topic" style="flex: 0 1 15%">
+			<form method="POST" class="forums-post">
+				<div class="forums-post-header" style="display: flex;">
+					<span style="white-space: nowrap;">Create new topic:&nbsp;</span>
+					<input type="text" name="title" style="flex: 1 1 100%;">
+					<?php if ($_SESSION['rank'] > 0){ ?>
+					<span style="white-space: nowrap;">&nbsp;Minimum Rank:&nbsp;</span>
+					<select name="min_rank" style="width: 150px;">
+						<option value="0" selected><?php echo getRankName(0); ?></option>
+						<?php
+							for ($p = 1; $p < $_SESSION['rank'] + 1; $p++){
+						?>
+						<option value="<?php echo $p; ?>"><?php echo getRankName($p); ?></option>
+						<?php
+							}
+						?>
+					</select>
+					<?php } ?>
+				</div>
+				<div class="forums-post-content">
+					<div class="forums-post-text">
+						<textarea name="text" style="width: 100%; box-sizing: border-box; margin-bottom: 0px;"></textarea>
+						<div style="text-align: right; padding-top: 5px;"><input type="submit" name="submit" value="Submit Topic"></div>
+					</div>
+				</div>
 			</form>
 			
 	<?php } ?>

@@ -18,9 +18,14 @@ use \Michelf\Markdown;
 		<?php if ($_SESSION['rank'] > 0) { ?>
 		<a href="?page=<?php echo $page; ?>&topic=<?php echo $post->recipient_id; ?>">TOPIC</a>
 		<a href="?page=<?php echo $page; ?>&post=<?php echo $post->id; ?>">VIEW</a>
-		<a href="?page=<?php echo $page; ?>&post=<?php echo $post->id; ?>&action=edit">EDIT</a>&nbsp;
+		<a href="?page=<?php echo $page; ?>&post=<?php echo $post->id; ?>&action=edit">EDIT</a>
+		<a href="?page=<?php echo $page; ?>&post=<?php echo $post->id; ?>&action=delete">DELETE</a>&nbsp;
 		<?php } ?>
 	</span>
 </div><?php
+	}
+	
+	function topicHeader($name, $rank){
+?><h2 style="margin: 3px 0; display: flex"><span style="flex: 1 1 100%;">Topic: <?php echo $name; ?></span><span style="white-space: nowrap;"><?php if ($rank > 0) echo getRankName($rank) . "S ONLY"; ?></span></h2><?php
 	}
 ?>
