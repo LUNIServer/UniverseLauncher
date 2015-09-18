@@ -10,7 +10,7 @@
 .forums-post>.forums-post-header{
 	background-color: #304068;
 	color: #FFF;
-	padding: 4px;
+	padding: 4px 18px;
 	display: flex;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
