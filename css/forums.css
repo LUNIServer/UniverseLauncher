@@ -62,3 +62,29 @@
 	 border-radius: 20px;
 	 padding: 20px;
 }
+
+.forums-topic-list{
+	display: flex;
+}
+
+.forums-topic-list>span{
+	white-space: nowrap;
+}
+
+.forums-topic-list select{
+		width: 150px;
+	}
+
+@media screen and (max-device-width : 800px){
+	.forums-topic-list{
+		flex-direction: column;
+	}
+	
+	.forums-topic-list>span{
+		white-space: initial;
+	}
+	
+	.forums-topic-list select{
+		width: 100%;
+	}
+}

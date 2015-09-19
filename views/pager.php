@@ -70,7 +70,7 @@
                 <li><a class="button" id="menusizer" href="?page=<?php echo $page; ?>&minimizedmenu=<?php if($minimizedmenu){echo "0";}else{echo"1";} ?>"><?php if($minimizedmenu){echo ">";}else{echo"<";} ?></a></li>
             </ul>
 		</div>
-		<div class="content-pane" style="padding-left: 180px; overflow: auto;">
+		<div class="content-pane">
 			<div style="padding: 40px;">
 <?php
 	switch($page){

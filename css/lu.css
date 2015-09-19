@@ -291,53 +291,106 @@ ul.nav>li:not(:last-child){
 	left: 0;
 	top: 0;
 	bottom: 2em;
+	width: 200px;
+    overflow: auto;
+}
+
+.menu>*{
 	max-width: 175px;
-    min-width:  30px;
-    width: 10%;
-	overflow: auto;
 }
 
 .minimizedmenu{
-    width:30px; 
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+    width:60px;
+	white-space: nowrap;
+}
+
+.minimizedmenu>*{
+	max-width: 36px;
+}
+
+.minimizedmenu>*>li{
+	overflow: hidden;
+}
+
+.minimizedmenu>*>li>a, .minimizedmenu>*>li:hover>a:hover{
+	color: rgba(0,0,0,0) !important;
+}
+
+.content-pane{
+	padding-left: 180px;
+	overflow: auto;
+}
+
+.minimizedmenu+.content-pane{
+	padding-left: 26px;
 }
 
 @media screen and (max-device-width : 1080px){ /*make text invisible*/
     .menu{
-        text-indent: 100%;
-        white-space: nowrap;
-        overflow: hidden;
+		width: 60px;
+		white-space: nowrap;
     }
+	
+	.menu>*{
+		max-width: 36px;
+		
+	}
+	
+	.menu>*>li{
+		overflow: hidden;
+	}
+	
+	.menu>*>li>a, .menu>*>li:hover>a:hover{
+		color: rgba(0,0,0,0) !important;
+	}
+	
+	.content-pane{
+		padding-left: 26px;
+		overflow: auto;
+	}
+	
     #menusizer{
-        opacity: 0;
+        display: none;
     }
 }
-ul.nav>li>.button{
-        background-size: contain;
-        background-repeat: no-repeat;
-        text-align: right;
-    }
-.dashboard-button{
-        background-image: url('../img/dashboard.png');
-    }
-.forums-button{
+
+.dashboard-button:before,
+.forums-button:before,
+.account-button:before,
+.logout-button:before,
+.character-button:before,
+.mail-button:before,
+.help-button:before
+ {
+	content: "";
+	display: inline-block;
+	width: 28px;
+	height: 22px;
+	vertical-align: top;
+	background-repeat: no-repeat;
+	background-size: 22px;
+}
+	
+.dashboard-button:before{
+    background-image: url('../img/dashboard.png');
+}
+
+.forums-button:before{
         background-image: url('../img/forums.png');
     }
-.account-button{
+.account-button:before{
         background-image: url('../img/account.png');
     }
-.logout-button{
+.logout-button:before{
         background-image: url('../img/logout.png');
     }
-.character-button{
+.character-button:before{
         background-image: url('../img/character.png');
     }
-.mail-button{
+.mail-button:before{
         background-image: url('../img/mail.png');
     }
-.help-button{
+.help-button:before{
         background-image: url('../img/help.png');
     }
 #menusizer{
@@ -577,8 +630,4 @@ a.pager{
 a.pager.current{
 	background-color: #F00;
 	color: #FFF !important;
-}
-
-.content-pane{
-    padding-left: 10% !important;
 }

@@ -279,7 +279,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 					$obj = $res->fetch_object();
 ?>
 				<div class="forums-post-blank">
-					<div class="forums-post-text" style="display: flex;">
+					<div class="forums-post-text forums-topic-list">
 						<span style="flex: 1 1 100%;"><a href="?page=<?php echo $page . "&topic=" . $obj->id; ?>"><?php
 						if ($obj->min_rank > 0){
 							echo "[" . getRankName($obj->min_rank) . "S] ";
@@ -291,7 +291,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 					$res2 = $mysql->query($sql2);
 					if ($res2 != NULL){
 						$obj2 = $res2->fetch_object();
-						?><span style="white-space: nowrap;">(<?php echo $obj2->cnt; ?> Posts<?php if ($obj2->last) { ?>, Last Post: <?php echo $obj2->last; } ?>)</span><?php
+						?><span>(<?php echo $obj2->cnt; ?> Posts<?php if ($obj2->last) { ?>, Last Post: <?php echo $obj2->last; } ?>)</span><?php
 					}
 ?>
 					</div>
@@ -308,12 +308,12 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 			
 			<br>
 			<form method="POST" class="forums-post">
-				<div class="forums-post-header" style="display: flex;">
-					<span style="white-space: nowrap;">Create new topic:&nbsp;</span>
+				<div class="forums-post-header forums-topic-list">
+					<span>Create new topic:&nbsp;</span>
 					<input type="text" name="title" style="flex: 1 1 100%;">
 					<?php if ($_SESSION['rank'] > 0){ ?>
-					<span style="white-space: nowrap;">&nbsp;Minimum Rank:&nbsp;</span>
-					<select name="min_rank" style="width: 150px;">
+					<span>&nbsp;Minimum Rank:&nbsp;</span>
+					<select name="min_rank">
 						<option value="0" selected><?php echo getRankName(0); ?></option>
 						<?php
 							for ($p = 1; $p < $_SESSION['rank'] + 1; $p++){
