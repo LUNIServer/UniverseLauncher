@@ -3,11 +3,27 @@ require_once('libraries/php-markdown-lib/MarkdownInterface.php');
 require_once('libraries/php-markdown-lib/Markdown.php');
 use \Michelf\Markdown;
 
-	function transform($text){
+	function transform($mysql, $text){
 		//Transforms a mardown text to LUNI flavored HTML
-		//Only compiles Markdown atm
+		$text = linkUsers($mysql, $text);
 		$my_html = Markdown::defaultTransform($text);
 		return $my_html;
+	}
+	
+	function linkUsers($mysql, $source){
+		$matches = array();
+		preg_match_all("/\@([A-Za-z0-9]+)/", $source, $matches);
+		$users = array_unique($matches[1]);
+		foreach ($users as $user){
+			$sql = "SELECT * FROM `accounts` WHERE `name` = '" . $user . "'";
+			$res = $mysql->query($sql);
+			if ($res != NULL){
+				if ($res->num_rows > 0){
+					$source = str_replace("@" . $user, "[&#64;" . $user . "](?page=account&name=" . $user . ")", $source);
+				}
+			}
+		}
+		return $source;
 	}
 	
 	function postHeader($post, $page){

@@ -103,7 +103,7 @@ require_once('libraries/forums.php');
 					</div>
 					<div class="forums-post-text">
 					<?php
-						echo transform($obj_post->text);
+						echo transform($mysql, $obj_post->text);
 					?>
 					</div>
 				</div>
@@ -234,7 +234,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 ?>
 						<div style="min-height: 100px;">
 <?php
-							echo transform($text);
+							echo transform($mysql, $text);
 ?>
 						</div>
 <?php
