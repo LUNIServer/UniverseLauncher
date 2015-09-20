@@ -7,7 +7,7 @@
 		<form method="post" action="?page=register" name="registerform" style="margin: 0;">
 
 			<!-- the user name input field uses a HTML5 pattern check -->
-			<label for="login_input_username">Username <span class="small">(only letters and numbers, 2 to 64 characters)</span></label><br>
+			<label for="login_input_username">Username </label><div class="small">(only letters and numbers, 2 to 64 characters)</div>
 			<input id="login_input_username" class="login_input" type="text" pattern="[a-zA-Z0-9]{2,64}" name="user_name" required /><br>
 
 			<!-- the email input field uses a HTML5 email type check -->

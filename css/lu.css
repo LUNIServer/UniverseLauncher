@@ -128,6 +128,7 @@ html.mythran>body{
 	border: 3px solid #BBB;
 	padding: 20px;
 	border-radius: 20px;
+	overflow: auto;
 }
 
 .box.widget{
@@ -262,11 +263,8 @@ ul.nav>li>.button{
 	padding: 5px;
 	box-sizing: border-box;
 	text-decoration: none;
-}
-
-#menusizer{
-	width:30px;
-    opacity:0.5;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 ul.nav>li>.title{
@@ -354,14 +352,7 @@ ul.nav>li:not(:last-child){
     }
 }
 
-.dashboard-button:before,
-.forums-button:before,
-.account-button:before,
-.logout-button:before,
-.character-button:before,
-.mail-button:before,
-.help-button:before
- {
+.img-button:before, .char-button:before{
 	content: "";
 	display: inline-block;
 	width: 28px;
@@ -371,32 +362,40 @@ ul.nav>li:not(:last-child){
 	background-size: 22px;
 }
 	
-.dashboard-button:before{
-    background-image: url('../img/dashboard.png');
-}
+.dashboard-button:before{ background-image: url('../img/dashboard.png');}
+.forums-button:before{ background-image: url('../img/forums.png');}
+.account-button:before{ background-image: url('../img/account.png');}
+.logout-button:before{ background-image: url('../img/logout.png');}
+.character-button:before{ background-image: url('../img/character.png');}
+.mail-button:before{ background-image: url('../img/mail.png');}
+.help-button:before{ background-image: url('../img/help.png');}
+.char-button-1:before{ background-image: url('../img/menu/1.png');}
+.char-button-2:before{ background-image: url('../img/menu/2.png');}
+.char-button-3:before{ background-image: url('../img/menu/3.png');}
+.char-button-4:before{ background-image: url('../img/menu/4.png');}
+.characters-button:before{ background-image: url('../img/menu/chars.png');}
+.accounts-button:before{ background-image: url('../img/menu/passport.png');}
+.sessions-button:before{ background-image: url('../img/menu/health.png');}
+.admin-button:before{ background-image: url('../img/menu/gear.png');}
+.instances-button:before{ background-image: url('../img/menu/box.png');}
 
-.forums-button:before{
-        background-image: url('../img/forums.png');
-    }
-.account-button:before{
-        background-image: url('../img/account.png');
-    }
-.logout-button:before{
-        background-image: url('../img/logout.png');
-    }
-.character-button:before{
-        background-image: url('../img/character.png');
-    }
-.mail-button:before{
-        background-image: url('../img/mail.png');
-    }
-.help-button:before{
-        background-image: url('../img/help.png');
-    }
 #menusizer{
     text-indent: 0%;
     white-space: normal;
     overflow: visible;
+	width:36px;
+    opacity:0.5;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	
+	line-height: 12px;
+	height: 32px;
+}
+
+#menusizer>span{
+	height: 22px;
+	display: inline-block;
+	font-size: 200%;
 }
 
 .menu .logo{
@@ -475,8 +474,10 @@ a.button:hover{
 	font-size: 30pt;
 }
 
-.wrapper span.small{
+.wrapper .small{
+	display: inline-block;
 	font-size: 15pt;
+	line-height: 1em;
 }
 
 .wrapper input{
@@ -533,6 +534,10 @@ input[type="submit"]:active, button[type="submit"]:active{
 	color: #55F;
 }
 
+.wrapper-content input{
+	max-width: 100%;
+}
+
 .wrapper-footer{
 	margin: 0 40px;
 	background-color: #FC0;
@@ -561,11 +566,38 @@ input[type="submit"]:active, button[type="submit"]:active{
 
 .table-cell{
 	padding: 5px;
+	display: table-cell;
 }
 
-@media (min-width: 30em){
+@media screen and (max-device-width : 800px){
+	.wrapper{
+		width: 100%;
+		max-width: initial;
+	}
+	
+	.wrapper-content{
+		border-radius: 0;
+	}
+}
+
+@media screen and (max-device-width : 800px){
 	.table-cell{
-		display: table-cell;
+		display: block;
+	}
+	
+	.wrapper-content input{
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-device-width : 500px){
+	.wrapper-footer{
+		margin: 0;
+		border-radius: 0;
+	}
+	
+	.wrapper{
+		margin: 0;
 	}
 }
 
@@ -616,18 +648,22 @@ table.th-right th{
 	background-color: #D00;
 }
 
-a.pager{
-	display: inline-block;
-	padding: 5px 10px;
-	border: 3px solid #000;
-	background-color: #FFF;
-	color: #000 !important;
-	font-wight: bold;
-	border-radius: 5px;
+.message{
+	position: fixed;
+	top: 20px;
+	right: 40px;
+	width: 512px;
+	display: block;
+	height: 128px;
+	background-image: url('../img/ui/info.png');
 	box-sizing: border-box;
+	padding: 20px 15px 20px 160px;
+	color: #FFF;
+	overflow: hidden;
 }
 
-a.pager.current{
-	background-color: #F00;
-	color: #FFF !important;
+.message>span{
+	display: block;
+	overflow: hidden;
+	max-height: 100%;
 }

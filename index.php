@@ -30,6 +30,8 @@
 		<link rel="stylesheet" href="css/dashboard.css" type="text/css"/>
 		<link rel="stylesheet" href="css/factions.css" type="text/css"/>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	</head>
 	<body style="overflow:auto; height: 100%; margin: 0;">
 <?php 

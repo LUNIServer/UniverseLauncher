@@ -1,5 +1,5 @@
 		<div class="wrapper">
-			<img src="img/lu2.png" style="width: 80%; margin: auto; display: block; margin-bottom: -8.2%;"/>
+			<img src="img/u_hq2.png" style="width: 80%; margin: auto; display: block; margin-bottom: -8.2%;"/>
 			<div class="wrapper-content">
 				<div style="display: block; margin-bottom:5%; width: 100%;"></div>
 				<form method="post" action="?" name="loginform">
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 			<div class="wrapper-footer">
-				<div><div style="display: flex"><span style="flex: 1 1 84%">&copy; 2015 LUNI Dev Team</span><a href="?page=register" style="flex: 1 1 16%; text-align: right; padding-right: 10px;">Register Account</a></div></div>
+				<div><div style="display: flex"><span style="flex: 1 1 50%">&copy; 2015 LUNI Dev Team</span><a href="?page=register" style="flex: 1 1 50%; text-align: right; padding-right: 10px;">Register Account</a></div></div>
 			</div>
 			
 		</div>
