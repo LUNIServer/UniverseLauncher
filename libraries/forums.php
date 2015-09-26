@@ -26,6 +26,22 @@ use \Michelf\Markdown;
 		return $source;
 	}
 	
+	/*
+		This function returns the link to the avatar a user has depending on the hash of it's email address.
+		You may enable any of the options below
+	*/
+	function getAvatarLink($hash){
+	//Use this option to use gravatar with local avatars as default (doesn't work when accessed from localhost	
+		//$dir = dirname($_SERVER["SCRIPT_NAME"]);
+		//if ($dir == "\\") $dir = "";
+		//$d = urlencode("http://" . $_SERVER["SERVER_NAME"] . $dir . "/img/avatar/" . $hash . ".png");
+		//return "http://www.gravatar.com/avatar/" . $hash . "?d=" . $d;
+	//Use this option for gravatar with identicons as default
+		return "http://www.gravatar.com/avatar/" . $hash . "?d=identicon";
+	//Use this option for ONLY local avatars
+		//return "img/avatar/" . $hash . ".png";
+	}
+	
 	function postHeader($post, $page){
 ?><div id="post-<?php echo $post->id; ?>" class="forums-post-header">
 	<span class="num">#<?php echo $post->id; ?></span>

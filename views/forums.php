@@ -48,7 +48,7 @@ require_once('libraries/forums.php');
 				if ($res_accounts != NULL){
 					for ($k = 0; $k < $res_accounts->num_rows; $k++){
 						$obj_account = $res_accounts->fetch_object();
-						$md5 = "";
+						$md5 = "00000000000000000000000000000000";
 						if (!empty($obj_account->email)) $md5 = md5( strtolower( trim( $obj_account->email ) ) );
 						$taccounts[$obj_account->name] = array('name' => $obj_account->name, 'mailhash' => $md5, 'rank' => $obj_account->rank);
 					}
@@ -91,7 +91,7 @@ require_once('libraries/forums.php');
 							<?php
 								if (isset($taccounts[$obj_post->sender])){
 									//if(!empty($taccounts[$obj_post->sender]['mailhash'])){
-?>							<img src="http://www.gravatar.com/avatar/<?php echo $taccounts[$obj_post->sender]['mailhash']; ?>?d=identicon" /><br><?php
+?>							<img class="avatar" src="<?php echo getAvatarLink($taccounts[$obj_post->sender]['mailhash']); ?>" /><br><?php
 									//}
 ?>
 							<span><?php  echo getRankName($taccounts[$obj_post->sender]['rank']) ?></span><br>
@@ -199,7 +199,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 							if ($email != "") $hash = md5(strtolower(trim( $email)));
 						?>
 						<p>
-							<img src="http://www.gravatar.com/avatar/<?php echo $hash; ?>?d=identicon" /><br>
+							<img class="avatar" src="<?php echo getAvatarLink($hash); ?>" /><br>
 							<span><?php  echo $rank; ?></span><br>
 							<b><?php echo $obj->sender; ?></b>
 						</p>
@@ -298,13 +298,18 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 				</div>
 <?php
 				}
+?>
+				<br>
+			</div>
+<?php
 			}else{
 				echo "Currently no topics available";
 			}
+		}else{
+			echo "Database Error: Please check your database and report this issue.";
 		}
 	?>
-				<br>
-			</div>
+			
 			
 			<br>
 			<form method="POST" class="forums-post">

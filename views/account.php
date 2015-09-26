@@ -1,3 +1,4 @@
+<?php require_once('libraries/forums.php'); ?>
 		<div class="box pane">
 			<h1 style="margin: 0;">Account</h1>
 			
@@ -9,12 +10,12 @@
 		if ($res != NULL){
 			if ($res->num_rows > 0){
 				$obj = $res->fetch_object();
-				$hash = "";
+				$hash = "00000000000000000000000000000000";
 				if ($obj->email != "") $hash = md5(strtolower(trim( $obj->email)));
 ?>
 			<br>
 			<div style="float:left">
-				<img src="http://www.gravatar.com/avatar/<?php echo $hash; ?>?d=identicon" /><br>
+				<img class="avatar" src="<?php echo getAvatarLink($hash); ?>" /><br>
 			</div>
 			<div style="font-size: 150%; padding-left: 100px;">
 				<span style="min-width: 5.5em; display: inline-block;">Name: </span>

@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule avatar/([a-zA-Z0-9]{32}).png image.php?id=$1

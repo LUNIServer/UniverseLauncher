@@ -33,7 +33,7 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	</head>
-	<body class="themed-background<?php if ($theme != "") echo " " . $theme; ?>" style="overflow:auto; height: 100%; margin: 0;">
+	<body class="themed-background" style="overflow:auto; height: 100%; margin: 0;">
 <?php 
 		if (isset($_GET['page']) && $_GET['page'] == 'register'){
 			require_once("classes/Registration.php");
