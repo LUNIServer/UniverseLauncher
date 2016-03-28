@@ -78,9 +78,9 @@ class Login
                     // get result row (as an object)
                     $result_row = $result_of_login_check->fetch_object();
 
-                    // using PHP 5.5's password_verify() function to check if the provided password fits
-                    // the hash of that user's password
-                    if (md5($_POST['user_password']) == $result_row->password) {
+                    // Hashes the users password with the SHA512 algorithm and encodes it as base64 for backwards
+                    // with the database
+                    if (base64_encode(hash('sha512', $_POST['user_password'])) == $result_row->password) {
 
                         // write user data into PHP SESSION (a file on your server)
                         $_SESSION['user_id'] = $result_row->id;
